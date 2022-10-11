@@ -1,12 +1,15 @@
 /** @format */
 
 import Image from "next/image";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Modal from "../components/modal";
 import Navbar from "../components/navbar";
 import basicImg from "../public/assets/images/qora-sedana.jpg";
 import https from "../api";
+import SuccessModal from "../components/success-modal";
+import { useRouter } from "next/router";
+import { openSuccessModal } from "../feature/modal-slice";
 
 const TOKEN = "5532127261:AAE0s6T4jMBhHEe0UR169_ZlFuI1DRRj7rM";
 const CHAT_ID = "-1001597577800";
@@ -18,9 +21,13 @@ const Result = () => {
   });
 
   const [error, setError] = useState(false);
+  const router = useRouter();
 
-  const { isOpenModal } = useSelector((state) => state.modal);
+  const { isOpenModal, isOpenSuccessModal } = useSelector(
+    (state) => state.modal
+  );
   const { analyzeResult } = useSelector((state) => state.quizzes);
+  const dispatch = useDispatch();
 
   const inputSetData = (name, value) => {
     setUser((prev) => ({ ...prev, [name]: value }));
@@ -29,7 +36,8 @@ const Result = () => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
 
-    if (user.name.length < 3 && user.phone.length < 6) {
+    if (!(user.name.length > 3 && user.phone.length > 6)) {
+      console.log("appp");
       setError(true);
       return;
     }
@@ -46,22 +54,31 @@ const Result = () => {
 
       if (response.data.ok) {
         setUser({ name: "", phone: "" });
+        dispatch(openSuccessModal());
       }
     } catch (error) {
       setError(true);
     }
   };
 
+  useEffect(() => {
+    if (!analyzeResult?.recommendList) {
+      router.push("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       {isOpenModal && <Modal />}
+      {isOpenSuccessModal && <SuccessModal />}
       <Navbar />
       <div className="w-7/12 m-0 mr-auto ml-auto mt-28">
         <h2 className="font-medium text-xl mr-auto ml-auto">
           {analyzeResult?.title}
         </h2>
         <ol className="list-disc ml-5 mt-6">
-          {analyzeResult?.recommendList.map((item, indx) => (
+          {analyzeResult?.recommendList?.map((item, indx) => (
             <li key={indx}>{item.text}</li>
           ))}
         </ol>
