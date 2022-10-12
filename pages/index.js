@@ -50,7 +50,7 @@ const Home = ({ data, analyzeData }) => {
     return (
         <div className="xl:w-8/12 md:w-9/12 sm:w-10/12 m-0 mr-auto ml-auto">
             <div>
-                <h2 className="text-center text-2xl font-bold mt-7 lg:w-7/12 m-0 mr-auto ml-auto">
+                <h2 className="text-center text-2xl font-bold mt-7 lg:w-7/12 m-0 mr-auto ml-auto -sm:pl-3 -sm:pr-3">
                     Қон босимининг ошиши инсулт аломатидан даракми?
                 </h2>
 
