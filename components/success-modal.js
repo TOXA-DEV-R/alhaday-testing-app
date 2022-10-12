@@ -8,8 +8,9 @@ const SuccessModal = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            //   router.push("https://alhadaya.uz/");
+            router.push("https://alhadaya.uz/");
         }, 5000);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
