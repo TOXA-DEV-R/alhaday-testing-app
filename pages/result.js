@@ -121,7 +121,7 @@ const Result = () => {
                 </h2>
 
                 <form
-                    className="sm:w-full -sm:w-10/12 -sm:flex -sm:flex-col items-center -sm:pl-3 -sm:pr-3 mr-auto ml-auto"
+                    className="sm:w-full items-center -sm:pl-3 -sm:pr-3 mr-auto ml-auto"
                     onSubmit={handleSubmit}
                 >
                     {error && (
@@ -130,7 +130,7 @@ const Result = () => {
                         </p>
                     )}
 
-                    <div className="group mt-4 sm:w-9/12 -sm:w-[80%]">
+                    <div className="group mt-4 sm:w-9/12">
                         <label htmlFor="name">Исмингиз:</label>
                         <input
                             type="text"
@@ -144,7 +144,7 @@ const Result = () => {
                             value={user.name}
                         />
                     </div>
-                    <div className="group mt-4 sm:w-9/12 -sm:w-[80%]">
+                    <div className="group mt-4 sm:w-9/12">
                         <label htmlFor="phone">Телефон рақамингиз:</label>
                         <input
                             type="tel"
@@ -158,7 +158,7 @@ const Result = () => {
                             value={user.phone}
                         />
                     </div>
-                    <p className="mt-3 w-9/12 -sm:text-center">
+                    <p className="mt-3 w-9/12">
                         Пастдаги тугмани босиб мутахассисларимиздан бепул
                         маълумот ва чегирмага эга бўлишингиз мумкин.
                     </p>
