@@ -54,7 +54,7 @@ const Modal = () => {
     };
 
     return (
-        <aside className="bg-[#00000069] fixed z-20 top-0 left-0 w-screen h-screen flex justify-center items-center -md:pl-3 -md:pr-3">
+        <aside className="bg-[#00000069] fixed z-20 top-0 left-0 w-screen h-full flex justify-center items-center -md:p-3">
             <div className="bg-white xl:w-4/12 lg:w-6/12 md:w-7/12 w-full relative rounded-md">
                 <button
                     className="modal__close absolute top-4 right-4"
